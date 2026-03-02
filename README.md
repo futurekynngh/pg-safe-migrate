@@ -1,9 +1,10 @@
 # pg-safe-migrate
 
 [![npm version](https://img.shields.io/npm/v/pg-safe-migrate.svg)](https://www.npmjs.com/package/pg-safe-migrate)
-[![npm downloads](https://img.shields.io/npm/dm/pg-safe-migrate.svg)](https://www.npmjs.com/package/pg-safe-migrate)
-[![CI](https://github.com/defnotwig/pg-safe-migrate/actions/workflows/ci.yml/badge.svg)](https://github.com/defnotwig/pg-safe-migrate/actions/workflows/ci.yml)
+[![npm core](https://img.shields.io/npm/v/pg-safe-migrate-core.svg?label=core)](https://www.npmjs.com/package/pg-safe-migrate-core)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue.svg)](https://www.typescriptlang.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18-green.svg)](https://nodejs.org/)
 
 **Safety-first PostgreSQL migration engine for Node.js**
 
@@ -42,19 +43,19 @@ pg-safe-migrate status
 
 ## Packages
 
-| Package | Version | Description |
-|---------|---------|-------------|
-| [`pg-safe-migrate`](./packages/cli) | [![npm](https://img.shields.io/npm/v/pg-safe-migrate.svg)](https://www.npmjs.com/package/pg-safe-migrate) | CLI tool |
+| Package                                   | Version                                                                                                             | Description                     |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| [`pg-safe-migrate`](./packages/cli)       | [![npm](https://img.shields.io/npm/v/pg-safe-migrate.svg)](https://www.npmjs.com/package/pg-safe-migrate)           | CLI tool                        |
 | [`pg-safe-migrate-core`](./packages/core) | [![npm](https://img.shields.io/npm/v/pg-safe-migrate-core.svg)](https://www.npmjs.com/package/pg-safe-migrate-core) | Core library (programmatic API) |
 
 ## Starter Templates
 
 Get up and running quickly with a production-ready starter:
 
-| Template | Stack | Description |
-|----------|-------|-------------|
+| Template                                                                          | Stack                | Description                            |
+| --------------------------------------------------------------------------------- | -------------------- | -------------------------------------- |
 | [express-postgres-starter](https://github.com/defnotwig/express-postgres-starter) | Express + TypeScript | REST API with safe migrations baked in |
-| [nextjs-postgres-starter](https://github.com/defnotwig/nextjs-postgres-starter) | Next.js + TypeScript | Full-stack app with migration workflow |
+| [nextjs-postgres-starter](https://github.com/defnotwig/nextjs-postgres-starter)   | Next.js + TypeScript | Full-stack app with migration workflow |
 
 ## Documentation
 
@@ -88,17 +89,17 @@ Returns exit code 1 if any safety rules are violated or drift is detected.
 
 ## Why pg-safe-migrate?
 
-| Feature | pg-safe-migrate | node-pg-migrate | graphile-migrate | dbmate |
-|---------|:-:|:-:|:-:|:-:|
-| Built-in safety linter | ✅ 10 rules | ❌ | ❌ | ❌ |
-| Drift detection | ✅ SHA-256 | ❌ | ⚠️ hash-based | ❌ |
-| Advisory locks | ✅ | ❌ | ✅ | ❌ |
-| CONCURRENTLY detection | ✅ auto | Manual | ❌ | ❌ |
-| Override system | ✅ auditable | N/A | N/A | N/A |
-| CI gate command | ✅ `check` | ❌ | ❌ | ❌ |
-| GitHub Action | ✅ | ❌ | ❌ | ❌ |
-| Down migrations | ✅ optional | ✅ | ❌ | ✅ |
-| TypeScript | ✅ native | ✅ | ✅ | Go |
+| Feature                | pg-safe-migrate | node-pg-migrate | graphile-migrate | dbmate |
+| ---------------------- | :-------------: | :-------------: | :--------------: | :----: |
+| Built-in safety linter |   ✅ 10 rules   |       ❌        |        ❌        |   ❌   |
+| Drift detection        |   ✅ SHA-256    |       ❌        |  ⚠️ hash-based   |   ❌   |
+| Advisory locks         |       ✅        |       ❌        |        ✅        |   ❌   |
+| CONCURRENTLY detection |     ✅ auto     |     Manual      |        ❌        |   ❌   |
+| Override system        |  ✅ auditable   |       N/A       |       N/A        |  N/A   |
+| CI gate command        |   ✅ `check`    |       ❌        |        ❌        |   ❌   |
+| GitHub Action          |       ✅        |       ❌        |        ❌        |   ❌   |
+| Down migrations        |   ✅ optional   |       ✅        |        ❌        |   ✅   |
+| TypeScript             |    ✅ native    |       ✅        |        ✅        |   Go   |
 
 ## Contributing
 

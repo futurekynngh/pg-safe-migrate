@@ -45,10 +45,10 @@ npx pg-safe-migrate up
 
 ```typescript
 // knexfile.ts
-import type { Knex } from 'knex';
+import type { Knex } from "knex";
 
 const config: Knex.Config = {
-  client: 'pg',
+  client: "pg",
   connection: process.env.DATABASE_URL,
   // Do NOT configure migrations here — pg-safe-migrate handles them
 };
@@ -91,16 +91,16 @@ npx pg-safe-migrate init
 
 ```typescript
 // data-source.ts
-import { DataSource } from 'typeorm';
+import { DataSource } from "typeorm";
 
 export const AppDataSource = new DataSource({
-  type: 'postgres',
+  type: "postgres",
   url: process.env.DATABASE_URL,
-  entities: ['src/entities/**/*.ts'],
+  entities: ["src/entities/**/*.ts"],
   // ❌ Don't use TypeORM migrations
   // migrations: ['src/migrations/**/*.ts'],
   // migrationsRun: false,
-  synchronize: false,  // NEVER use synchronize in production
+  synchronize: false, // NEVER use synchronize in production
 });
 ```
 
@@ -131,7 +131,7 @@ jobs:
         image: postgres:16
         env:
           POSTGRES_PASSWORD: postgres
-        ports: ['5432:5432']
+        ports: ["5432:5432"]
     steps:
       - uses: actions/checkout@v4
       - uses: defnotwig/pg-safe-migrate@v1
@@ -162,10 +162,10 @@ Never use this in production. It makes schema changes without migrations:
 
 ```typescript
 // ❌ DANGEROUS
-synchronize: true
+synchronize: true;
 
 // ✅ Always false — use pg-safe-migrate
-synchronize: false
+synchronize: false;
 ```
 
 ### Lock contention

@@ -17,9 +17,9 @@ It provides a CLI, core library, safety linter, drift detection, and GitHub Acti
 
 ## npm Packages
 
-| Package | Link | Purpose |
-|---------|------|---------|
-| `pg-safe-migrate` | [npmjs.com/package/pg-safe-migrate](https://www.npmjs.com/package/pg-safe-migrate) | CLI with 8 commands |
+| Package                | Link                                                                                         | Purpose                    |
+| ---------------------- | -------------------------------------------------------------------------------------------- | -------------------------- |
+| `pg-safe-migrate`      | [npmjs.com/package/pg-safe-migrate](https://www.npmjs.com/package/pg-safe-migrate)           | CLI with 8 commands        |
 | `pg-safe-migrate-core` | [npmjs.com/package/pg-safe-migrate-core](https://www.npmjs.com/package/pg-safe-migrate-core) | Core engine (embedded use) |
 
 ## GitHub Repository
@@ -41,27 +41,27 @@ It provides a CLI, core library, safety linter, drift detection, and GitHub Acti
 
 ## Starter Templates
 
-| Template | Link |
-|----------|------|
+| Template           | Link                                                                                                   |
+| ------------------ | ------------------------------------------------------------------------------------------------------ |
 | Express + Postgres | [github.com/defnotwig/express-postgres-starter](https://github.com/defnotwig/express-postgres-starter) |
-| Next.js + Postgres | [github.com/defnotwig/nextjs-postgres-starter](https://github.com/defnotwig/nextjs-postgres-starter) |
+| Next.js + Postgres | [github.com/defnotwig/nextjs-postgres-starter](https://github.com/defnotwig/nextjs-postgres-starter)   |
 
 ## Downstream Adoption / Merged PRs
 
-| Repository | PR | Status |
-|------------|-----|--------|
+| Repository  | PR            | Status        |
+| ----------- | ------------- | ------------- |
 | [repo-name] | [PR #X](link) | Merged / Open |
 | [repo-name] | [PR #X](link) | Merged / Open |
 | [repo-name] | [PR #X](link) | Merged / Open |
 
 ## Test Coverage
 
-| Category | Count |
-|----------|-------|
-| Core unit tests | 131 |
-| CLI unit tests | 22 |
-| Integration tests | 16 |
-| **Total** | **169** |
+| Category          | Count   |
+| ----------------- | ------- |
+| Core unit tests   | 131     |
+| CLI unit tests    | 22      |
+| Integration tests | 16      |
+| **Total**         | **169** |
 
 ## CI Matrix
 
@@ -102,10 +102,10 @@ See [ROADMAP.md](../ROADMAP.md) for full details.
 
 ## Content / Marketing
 
-| Type | Title |
-|------|-------|
+| Type        | Title                                                               |
+| ----------- | ------------------------------------------------------------------- |
 | Launch post | "pg-safe-migrate: Advisory Locks + Drift Detection + Safe Defaults" |
-| Deep dive | "Why CREATE INDEX CONCURRENTLY Breaks Transactions" |
+| Deep dive   | "Why CREATE INDEX CONCURRENTLY Breaks Transactions"                 |
 
 ## What This Demonstrates
 

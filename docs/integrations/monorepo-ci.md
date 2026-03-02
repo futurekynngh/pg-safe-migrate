@@ -94,7 +94,7 @@ name: CI
 on:
   pull_request:
     paths:
-      - 'packages/db/migrations/**'
+      - "packages/db/migrations/**"
 
 jobs:
   migration-lint:
@@ -113,60 +113,60 @@ jobs:
 ### Full check against a real database
 
 ```yaml
-  migration-check:
-    name: Migration Check
-    runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:16
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: testdb
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-        ports: ['5432:5432']
+migration-check:
+  name: Migration Check
+  runs-on: ubuntu-latest
+  services:
+    postgres:
+      image: postgres:16
+      env:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+        POSTGRES_DB: testdb
+      options: >-
+        --health-cmd pg_isready
+        --health-interval 10s
+        --health-timeout 5s
+        --health-retries 5
+      ports: ["5432:5432"]
 
-    steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-        with: { version: 9 }
-      - uses: actions/setup-node@v4
-        with: { node-version: 20, cache: pnpm }
-      - run: pnpm install --frozen-lockfile
+  steps:
+    - uses: actions/checkout@v4
+    - uses: pnpm/action-setup@v4
+      with: { version: 9 }
+    - uses: actions/setup-node@v4
+      with: { node-version: 20, cache: pnpm }
+    - run: pnpm install --frozen-lockfile
 
-      - name: Apply migrations
-        run: pnpm db:up
-        env:
-          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/testdb
+    - name: Apply migrations
+      run: pnpm db:up
+      env:
+        DATABASE_URL: postgresql://postgres:postgres@localhost:5432/testdb
 
-      - name: Run check
-        run: pnpm db:check
-        env:
-          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/testdb
+    - name: Run check
+      run: pnpm db:check
+      env:
+        DATABASE_URL: postgresql://postgres:postgres@localhost:5432/testdb
 ```
 
 ### Using the GitHub Action directly
 
 ```yaml
-  migration-check:
-    runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:16
-        env:
-          POSTGRES_PASSWORD: postgres
-        ports: ['5432:5432']
-    steps:
-      - uses: actions/checkout@v4
-      - uses: defnotwig/pg-safe-migrate@v1
-        with:
-          command: check
-          database-url: postgresql://postgres:postgres@localhost:5432/postgres
-          migrations-dir: packages/db/migrations
+migration-check:
+  runs-on: ubuntu-latest
+  services:
+    postgres:
+      image: postgres:16
+      env:
+        POSTGRES_PASSWORD: postgres
+      ports: ["5432:5432"]
+  steps:
+    - uses: actions/checkout@v4
+    - uses: defnotwig/pg-safe-migrate@v1
+      with:
+        command: check
+        database-url: postgresql://postgres:postgres@localhost:5432/postgres
+        migrations-dir: packages/db/migrations
 ```
 
 ## Turborepo

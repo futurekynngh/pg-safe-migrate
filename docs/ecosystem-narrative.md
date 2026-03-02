@@ -4,8 +4,9 @@
 
 ## Project
 
-**pg-safe-migrate** — A safety-first PostgreSQL migration engine for Node.js  
-- GitHub: [github.com/defnotwig/pg-safe-migrate](https://github.com/defnotwig/pg-safe-migrate)  
+**pg-safe-migrate** — A safety-first PostgreSQL migration engine for Node.js
+
+- GitHub: [github.com/defnotwig/pg-safe-migrate](https://github.com/defnotwig/pg-safe-migrate)
 - npm: [pg-safe-migrate](https://www.npmjs.com/package/pg-safe-migrate) | [pg-safe-migrate-core](https://www.npmjs.com/package/pg-safe-migrate-core)
 
 ## The Gap in the Node.js + PostgreSQL Ecosystem
@@ -14,20 +15,20 @@ PostgreSQL is the most popular database for Node.js applications (per the 2024 S
 
 - **Advisory locks** to prevent concurrent migration runs in distributed deployments (Kubernetes pods, CI runners)
 - **Checksum-based drift detection** to catch unauthorized schema changes between environments
-- **Safe-defaults linting** that catches destructive patterns *before* they reach production — like `DROP TABLE` without explicit override, `ALTER TABLE ... ADD COLUMN ... DEFAULT` on large tables, or `CREATE INDEX` inside transactions (which deadlocks on PostgreSQL)
+- **Safe-defaults linting** that catches destructive patterns _before_ they reach production — like `DROP TABLE` without explicit override, `ALTER TABLE ... ADD COLUMN ... DEFAULT` on large tables, or `CREATE INDEX` inside transactions (which deadlocks on PostgreSQL)
 
 Existing tools (Knex migrations, TypeORM migrations, node-pg-migrate, graphile-migrate) each address some subset, but none provide all three as first-class, zero-config defaults. This forces teams to build custom safety wrappers — or, more commonly, ship unsafe migrations that cause production outages.
 
 ## What pg-safe-migrate Provides
 
-| Capability | Detail |
-|---|---|
-| **Advisory locks** | SHA-256-derived `pg_advisory_lock` IDs prevent concurrent runs across any number of instances |
-| **Drift detection** | SHA-256 checksums for every applied migration; `check` command detects file tampering |
-| **10 lint rules** | PGSM001–PGSM010 covering DROP TABLE, ALTER TYPE, raw TRUNCATE, missing transactions, `CONCURRENTLY` in transactions, lock timeouts, and more |
-| **Transaction policy** | Auto-detects `CREATE INDEX CONCURRENTLY` and runs outside transactions; `always`/`never`/`auto` modes |
-| **CLI + Library + GitHub Action** | `init`, `create`, `up`, `down`, `status`, `lint`, `check`, `doctor` — usable as CLI, programmatic API, or CI gate |
-| **Override system** | `-- pgsm:allow PGSM001 reason="..." ticket="JIRA-123"` inline directives for intentional overrides with audit trail |
+| Capability                        | Detail                                                                                                                                       |
+| --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Advisory locks**                | SHA-256-derived `pg_advisory_lock` IDs prevent concurrent runs across any number of instances                                                |
+| **Drift detection**               | SHA-256 checksums for every applied migration; `check` command detects file tampering                                                        |
+| **10 lint rules**                 | PGSM001–PGSM010 covering DROP TABLE, ALTER TYPE, raw TRUNCATE, missing transactions, `CONCURRENTLY` in transactions, lock timeouts, and more |
+| **Transaction policy**            | Auto-detects `CREATE INDEX CONCURRENTLY` and runs outside transactions; `always`/`never`/`auto` modes                                        |
+| **CLI + Library + GitHub Action** | `init`, `create`, `up`, `down`, `status`, `lint`, `check`, `doctor` — usable as CLI, programmatic API, or CI gate                            |
+| **Override system**               | `-- pgsm:allow PGSM001 reason="..." ticket="JIRA-123"` inline directives for intentional overrides with audit trail                          |
 
 ## Ecosystem Significance
 

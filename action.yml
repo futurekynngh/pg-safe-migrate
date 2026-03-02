@@ -1,58 +1,58 @@
-name: 'pg-safe-migrate'
-description: 'Run pg-safe-migrate commands in your CI pipeline — safety-first PostgreSQL migrations'
-author: 'pg-safe-migrate contributors'
+name: "pg-safe-migrate"
+description: "Run pg-safe-migrate commands in your CI pipeline — safety-first PostgreSQL migrations"
+author: "pg-safe-migrate contributors"
 
 branding:
-  icon: 'database'
-  color: 'blue'
+  icon: "database"
+  color: "blue"
 
 inputs:
   command:
-    description: 'Command to run: check, up, down, status, lint, doctor'
+    description: "Command to run: check, up, down, status, lint, doctor"
     required: true
-    default: 'check'
+    default: "check"
   database_url:
-    description: 'PostgreSQL connection string'
+    description: "PostgreSQL connection string"
     required: true
   dir:
-    description: 'Path to migrations directory'
+    description: "Path to migrations directory"
     required: false
-    default: './migrations'
+    default: "./migrations"
   schema:
-    description: 'Database schema for history table'
+    description: "Database schema for history table"
     required: false
-    default: 'public'
+    default: "public"
   table:
-    description: 'History table name'
+    description: "History table name"
     required: false
-    default: '_pg_safe_migrate'
+    default: "_pg_safe_migrate"
   transaction:
-    description: 'Transaction policy: auto | always | never'
+    description: "Transaction policy: auto | always | never"
     required: false
-    default: 'auto'
+    default: "auto"
   allow_unsafe:
-    description: 'Comma-separated list of safety rules to allow (e.g., PGSM001,PGSM007)'
+    description: "Comma-separated list of safety rules to allow (e.g., PGSM001,PGSM007)"
     required: false
-    default: ''
+    default: ""
   version:
-    description: 'Version of pg-safe-migrate to install'
+    description: "Version of pg-safe-migrate to install"
     required: false
-    default: 'latest'
+    default: "latest"
   node_version:
-    description: 'Node.js version to use (only applicable if setup-node is needed)'
+    description: "Node.js version to use (only applicable if setup-node is needed)"
     required: false
-    default: '20'
+    default: "20"
 
 outputs:
   result:
-    description: 'Exit code from pg-safe-migrate'
+    description: "Exit code from pg-safe-migrate"
     value: ${{ steps.run.outputs.result }}
   stdout:
-    description: 'Standard output from pg-safe-migrate'
+    description: "Standard output from pg-safe-migrate"
     value: ${{ steps.run.outputs.stdout }}
 
 runs:
-  using: 'composite'
+  using: "composite"
   steps:
     - name: Setup Node.js
       uses: actions/setup-node@v4
@@ -68,7 +68,7 @@ runs:
       shell: bash
       env:
         DATABASE_URL: ${{ inputs.database_url }}
-        NO_COLOR: '1'
+        NO_COLOR: "1"
       run: |
         ARGS="${{ inputs.command }}"
         ARGS="$ARGS --dir ${{ inputs.dir }}"

@@ -44,31 +44,31 @@ jobs:
 
 ## Inputs
 
-| Input | Description | Required | Default |
-|-------|-------------|----------|---------|
-| `command` | Command to run: `check`, `up`, `down`, `status`, `lint`, `doctor` | Yes | `check` |
-| `database_url` | PostgreSQL connection string | Yes | — |
-| `dir` | Path to migrations directory | No | `./migrations` |
-| `schema` | Database schema for history table | No | `public` |
-| `table` | History table name | No | `_pg_safe_migrate` |
-| `transaction` | Transaction policy: `auto`, `always`, `never` | No | `auto` |
-| `allow_unsafe` | Comma-separated safety rules to allow | No | — |
-| `version` | Version of pg-safe-migrate to install | No | `latest` |
+| Input          | Description                                                       | Required | Default            |
+| -------------- | ----------------------------------------------------------------- | -------- | ------------------ |
+| `command`      | Command to run: `check`, `up`, `down`, `status`, `lint`, `doctor` | Yes      | `check`            |
+| `database_url` | PostgreSQL connection string                                      | Yes      | —                  |
+| `dir`          | Path to migrations directory                                      | No       | `./migrations`     |
+| `schema`       | Database schema for history table                                 | No       | `public`           |
+| `table`        | History table name                                                | No       | `_pg_safe_migrate` |
+| `transaction`  | Transaction policy: `auto`, `always`, `never`                     | No       | `auto`             |
+| `allow_unsafe` | Comma-separated safety rules to allow                             | No       | —                  |
+| `version`      | Version of pg-safe-migrate to install                             | No       | `latest`           |
 
 ## Outputs
 
-| Output | Description |
-|--------|-------------|
+| Output   | Description                    |
+| -------- | ------------------------------ |
 | `result` | Exit code from pg-safe-migrate |
 
 ## Exit Codes
 
-| Code | Meaning |
-|------|---------|
-| `0` | Success |
-| `1` | Drift, unsafe migrations, or lint errors |
-| `2` | Configuration or usage error |
-| `3` | Database connectivity or permissions error |
+| Code | Meaning                                    |
+| ---- | ------------------------------------------ |
+| `0`  | Success                                    |
+| `1`  | Drift, unsafe migrations, or lint errors   |
+| `2`  | Configuration or usage error               |
+| `3`  | Database connectivity or permissions error |
 
 ## Recommended Workflow
 

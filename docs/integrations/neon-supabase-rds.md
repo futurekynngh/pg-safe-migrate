@@ -72,6 +72,7 @@ DATABASE_URL="postgresql://postgres.[ref]:pass@aws-0-region.pooler.supabase.com:
 ### Why not the pooler?
 
 Supabase's pgbouncer runs in **transaction mode** by default. This means:
+
 - `SET` commands are lost between statements
 - Advisory locks don't persist
 - Multi-statement transactions may behave unexpectedly
@@ -190,10 +191,10 @@ CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_users_email ON users (email);
 
 ## Common Footguns
 
-| Issue | Cause | Fix |
-|-------|-------|-----|
-| "advisory lock failed" | Using pooled connection | Switch to direct connection |
-| "SSL required" | Missing `sslmode` param | Add `?sslmode=require` to URL |
-| "statement timeout" | Large migration on big table | Set `statement_timeout` or run off-hours |
-| "permission denied" | Limited DB user | Use superuser or grant `CREATE` on schema |
-| "connection refused" | IP not allowed | Add CI runner IP to security group / allow-list |
+| Issue                  | Cause                        | Fix                                             |
+| ---------------------- | ---------------------------- | ----------------------------------------------- |
+| "advisory lock failed" | Using pooled connection      | Switch to direct connection                     |
+| "SSL required"         | Missing `sslmode` param      | Add `?sslmode=require` to URL                   |
+| "statement timeout"    | Large migration on big table | Set `statement_timeout` or run off-hours        |
+| "permission denied"    | Limited DB user              | Use superuser or grant `CREATE` on schema       |
+| "connection refused"   | IP not allowed               | Add CI runner IP to security group / allow-list |

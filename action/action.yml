@@ -1,51 +1,51 @@
-name: 'pg-safe-migrate'
-description: 'Run pg-safe-migrate commands in your CI pipeline — safety-first PostgreSQL migrations'
-author: 'pg-safe-migrate contributors'
+name: "pg-safe-migrate"
+description: "Run pg-safe-migrate commands in your CI pipeline — safety-first PostgreSQL migrations"
+author: "pg-safe-migrate contributors"
 
 branding:
-  icon: 'database'
-  color: 'blue'
+  icon: "database"
+  color: "blue"
 
 inputs:
   command:
-    description: 'Command to run: check, up, down, status, lint, doctor'
+    description: "Command to run: check, up, down, status, lint, doctor"
     required: true
-    default: 'check'
+    default: "check"
   database_url:
-    description: 'PostgreSQL connection string'
+    description: "PostgreSQL connection string"
     required: true
   dir:
-    description: 'Path to migrations directory'
+    description: "Path to migrations directory"
     required: false
-    default: './migrations'
+    default: "./migrations"
   schema:
-    description: 'Database schema for history table'
+    description: "Database schema for history table"
     required: false
-    default: 'public'
+    default: "public"
   table:
-    description: 'History table name'
+    description: "History table name"
     required: false
-    default: '_pg_safe_migrate'
+    default: "_pg_safe_migrate"
   transaction:
-    description: 'Transaction policy: auto | always | never'
+    description: "Transaction policy: auto | always | never"
     required: false
-    default: 'auto'
+    default: "auto"
   allow_unsafe:
-    description: 'Comma-separated list of safety rules to allow (e.g., PGSM001,PGSM007)'
+    description: "Comma-separated list of safety rules to allow (e.g., PGSM001,PGSM007)"
     required: false
-    default: ''
+    default: ""
   version:
-    description: 'Version of pg-safe-migrate to install'
+    description: "Version of pg-safe-migrate to install"
     required: false
-    default: 'latest'
+    default: "latest"
 
 outputs:
   result:
-    description: 'Exit code from pg-safe-migrate'
+    description: "Exit code from pg-safe-migrate"
     value: ${{ steps.run.outputs.result }}
 
 runs:
-  using: 'composite'
+  using: "composite"
   steps:
     - name: Install pg-safe-migrate
       shell: bash

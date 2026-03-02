@@ -36,6 +36,7 @@ PGSM003 [ERROR] CREATE INDEX without CONCURRENTLY
 ```
 
 Rules include:
+
 - `PGSM001`: Destructive `DROP TABLE` / `DROP COLUMN`
 - `PGSM003`: Index creation without `CONCURRENTLY`
 - `PGSM005`: `ALTER TYPE ADD VALUE` inside a transaction (PG limitation)
@@ -48,11 +49,11 @@ Every migration run acquires a PostgreSQL advisory lock first. If another proces
 
 ```typescript
 // Under the hood
-await client.query('SELECT pg_advisory_lock($1)', [lockId]);
+await client.query("SELECT pg_advisory_lock($1)", [lockId]);
 try {
   // ... run migrations
 } finally {
-  await client.query('SELECT pg_advisory_unlock($1)', [lockId]);
+  await client.query("SELECT pg_advisory_unlock($1)", [lockId]);
 }
 ```
 
@@ -121,15 +122,15 @@ This blocks PRs that introduce unsafe migrations, drift, or ordering issues.
 
 ## Comparison
 
-| Feature | pg-safe-migrate | node-pg-migrate | graphile-migrate | dbmate |
-|---------|:-:|:-:|:-:|:-:|
-| Safety linting | ✅ 10 rules | ❌ | ❌ | ❌ |
-| Advisory locks | ✅ | ❌ | ✅ | ❌ |
-| Drift detection | ✅ SHA-256 | ❌ | ❌ | ❌ |
-| Transaction control | ✅ per-migration | ✅ | ✅ | ✅ |
-| Override with audit | ✅ | ❌ | ❌ | ❌ |
-| GitHub Action | ✅ | ❌ | ❌ | ❌ |
-| Pure SQL migrations | ✅ | ❌ (JS) | ✅ | ✅ |
+| Feature             | pg-safe-migrate  | node-pg-migrate | graphile-migrate | dbmate |
+| ------------------- | :--------------: | :-------------: | :--------------: | :----: |
+| Safety linting      |   ✅ 10 rules    |       ❌        |        ❌        |   ❌   |
+| Advisory locks      |        ✅        |       ❌        |        ✅        |   ❌   |
+| Drift detection     |    ✅ SHA-256    |       ❌        |        ❌        |   ❌   |
+| Transaction control | ✅ per-migration |       ✅        |        ✅        |   ✅   |
+| Override with audit |        ✅        |       ❌        |        ❌        |   ❌   |
+| GitHub Action       |        ✅        |       ❌        |        ❌        |   ❌   |
+| Pure SQL migrations |        ✅        |     ❌ (JS)     |        ✅        |   ✅   |
 
 ## Links
 
@@ -140,4 +141,4 @@ This blocks PRs that introduce unsafe migrations, drift, or ordering issues.
 
 ---
 
-*pg-safe-migrate is MIT licensed and accepts contributions. See the [Contributing guide](https://github.com/defnotwig/pg-safe-migrate/blob/main/CONTRIBUTING.md).*
+_pg-safe-migrate is MIT licensed and accepts contributions. See the [Contributing guide](https://github.com/defnotwig/pg-safe-migrate/blob/main/CONTRIBUTING.md)._

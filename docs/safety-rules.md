@@ -146,11 +146,11 @@ ALTER TABLE users VALIDATE CONSTRAINT chk_age;
 
 ## Severity Levels
 
-| Level | Meaning | Exit Code |
-|-------|---------|-----------|
-| `error` | Must be fixed or explicitly overridden | 1 |
-| `warning` | Should be reviewed; does not block by default | 0 |
-| `info` | Informational; does not block | 0 |
+| Level     | Meaning                                       | Exit Code |
+| --------- | --------------------------------------------- | --------- |
+| `error`   | Must be fixed or explicitly overridden        | 1         |
+| `warning` | Should be reviewed; does not block by default | 0         |
+| `info`    | Informational; does not block                 | 0         |
 
 ## Machine-Readable Output
 

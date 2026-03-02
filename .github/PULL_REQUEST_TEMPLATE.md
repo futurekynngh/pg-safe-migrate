@@ -12,9 +12,9 @@ Brief description of the changes.
 
 ## Changes Made
 
-- 
-- 
-- 
+-
+-
+-
 
 ## Testing
 

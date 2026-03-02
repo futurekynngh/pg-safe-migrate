@@ -15,25 +15,25 @@
 
 ## Safety Rules
 
-| Rule | What it catches |
-|------|----------------|
-| PGSM001 | `DROP TABLE` / `DROP COLUMN` — destructive operations |
+| Rule    | What it catches                                                         |
+| ------- | ----------------------------------------------------------------------- |
+| PGSM001 | `DROP TABLE` / `DROP COLUMN` — destructive operations                   |
 | PGSM002 | `ALTER TABLE ... ADD COLUMN ... DEFAULT` — full table rewrite (PG < 11) |
-| PGSM003 | `CREATE INDEX` without `CONCURRENTLY` — table locks |
-| PGSM004 | Missing `IF NOT EXISTS` / `IF EXISTS` — non-idempotent DDL |
-| PGSM005 | `ALTER TYPE ... ADD VALUE` inside a transaction — PG limitation |
-| PGSM006 | Raw data manipulation in schema migrations |
-| PGSM007 | `SET NOT NULL` without a check constraint — full table scan |
-| PGSM008 | Multiple DDL statements in one migration — harder rollback |
-| PGSM009 | Renaming tables or columns without aliases — breaks dependents |
-| PGSM010 | Missing `WHERE` clause in `UPDATE`/`DELETE` — full-table modification |
+| PGSM003 | `CREATE INDEX` without `CONCURRENTLY` — table locks                     |
+| PGSM004 | Missing `IF NOT EXISTS` / `IF EXISTS` — non-idempotent DDL              |
+| PGSM005 | `ALTER TYPE ... ADD VALUE` inside a transaction — PG limitation         |
+| PGSM006 | Raw data manipulation in schema migrations                              |
+| PGSM007 | `SET NOT NULL` without a check constraint — full table scan             |
+| PGSM008 | Multiple DDL statements in one migration — harder rollback              |
+| PGSM009 | Renaming tables or columns without aliases — breaks dependents          |
+| PGSM010 | Missing `WHERE` clause in `UPDATE`/`DELETE` — full-table modification   |
 
 ## Packages
 
-| Package | npm |
-|---------|-----|
-| `pg-safe-migrate` (CLI) | [![npm](https://img.shields.io/npm/v/pg-safe-migrate)](https://www.npmjs.com/package/pg-safe-migrate) |
-| `pg-safe-migrate-core` | [![npm](https://img.shields.io/npm/v/pg-safe-migrate-core)](https://www.npmjs.com/package/pg-safe-migrate-core) |
+| Package                 | npm                                                                                                             |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `pg-safe-migrate` (CLI) | [![npm](https://img.shields.io/npm/v/pg-safe-migrate)](https://www.npmjs.com/package/pg-safe-migrate)           |
+| `pg-safe-migrate-core`  | [![npm](https://img.shields.io/npm/v/pg-safe-migrate-core)](https://www.npmjs.com/package/pg-safe-migrate-core) |
 
 ## Quick Start
 
@@ -66,6 +66,7 @@ DATABASE_URL=postgresql://... npx pg-safe-migrate up
 ## What's Next
 
 See the [Roadmap](ROADMAP.md) for planned improvements including:
+
 - More safety rules (v0.2)
 - Serverless adapters and ORM integrations (v0.3)
 - Migration groups and squash (v0.4)

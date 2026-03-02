@@ -36,6 +36,7 @@ npx pg-safe-migrate up
 ```
 
 **Links:**
+
 - GitHub: https://github.com/defnotwig/pg-safe-migrate
 - npm: https://www.npmjs.com/package/pg-safe-migrate
 
@@ -59,18 +60,19 @@ I built a Node.js migration tool specifically designed around PostgreSQL safety 
 
 **10 safety rules (the interesting part for this sub):**
 
-| Rule | What it catches |
-|---|---|
-| PGSM001 | DROP TABLE/COLUMN without explicit override |
-| PGSM003 | CREATE INDEX without CONCURRENTLY |
+| Rule    | What it catches                                        |
+| ------- | ------------------------------------------------------ |
+| PGSM001 | DROP TABLE/COLUMN without explicit override            |
+| PGSM003 | CREATE INDEX without CONCURRENTLY                      |
 | PGSM004 | ALTER TABLE ... ADD COLUMN ... DEFAULT on large tables |
-| PGSM005 | ALTER TYPE ADD VALUE inside a transaction |
-| PGSM006 | Missing IF NOT EXISTS / IF EXISTS guards |
-| PGSM007 | SET NOT NULL without prior check constraint |
-| PGSM008 | SET lock_timeout / statement_timeout in migrations |
-| PGSM010 | UPDATE/DELETE without WHERE clause |
+| PGSM005 | ALTER TYPE ADD VALUE inside a transaction              |
+| PGSM006 | Missing IF NOT EXISTS / IF EXISTS guards               |
+| PGSM007 | SET NOT NULL without prior check constraint            |
+| PGSM008 | SET lock_timeout / statement_timeout in migrations     |
+| PGSM010 | UPDATE/DELETE without WHERE clause                     |
 
 Every rule can be overridden with a reason and optional Jira ticket:
+
 ```sql
 -- pgsm:allow PGSM001 reason="Removing deprecated table" ticket="ENG-1234"
 DROP TABLE IF EXISTS feature_flags;
@@ -102,12 +104,12 @@ A few things TypeScript folks might appreciate:
 - **Programmatic API** — not just a CLI, the core library is usable as a typed Node.js module
 
 ```typescript
-import { createMigrator } from 'pg-safe-migrate-core';
-import type { MigratorConfig, MigrationPlan } from 'pg-safe-migrate-core';
+import { createMigrator } from "pg-safe-migrate-core";
+import type { MigratorConfig, MigrationPlan } from "pg-safe-migrate-core";
 
 const config: MigratorConfig = {
   databaseUrl: process.env.DATABASE_URL!,
-  migrationsDir: './migrations',
+  migrationsDir: "./migrations",
 };
 
 const migrator = createMigrator(config);

@@ -5,6 +5,7 @@
 ## Why migrations fail in prod
 
 Most Postgres outages from migrations happen for three reasons:
+
 1. **Missing `CONCURRENTLY`** on index creation → locks the whole table
 2. **No advisory locks** → two deploys run migrations simultaneously → corrupted state
 3. **No drift detection** → someone hand-edits a migration → silent schema mismatch
@@ -43,17 +44,17 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Scripts
 
-| Script | Description |
-|--------|-------------|
-| `pnpm dev` | Start Next.js dev server |
-| `pnpm build` | Production build |
-| `pnpm start` | Start production server |
-| `pnpm db:up` | Apply pending migrations |
-| `pnpm db:down` | Rollback last migration |
-| `pnpm db:status` | Show migration status |
-| `pnpm db:lint` | Lint migrations for safety issues |
-| `pnpm db:check` | Full check (lint + drift + ordering) |
-| `pnpm db:create` | Create a new migration |
+| Script           | Description                          |
+| ---------------- | ------------------------------------ |
+| `pnpm dev`       | Start Next.js dev server             |
+| `pnpm build`     | Production build                     |
+| `pnpm start`     | Start production server              |
+| `pnpm db:up`     | Apply pending migrations             |
+| `pnpm db:down`   | Rollback last migration              |
+| `pnpm db:status` | Show migration status                |
+| `pnpm db:lint`   | Lint migrations for safety issues    |
+| `pnpm db:check`  | Full check (lint + drift + ordering) |
+| `pnpm db:create` | Create a new migration               |
 
 ## Project Structure
 

@@ -42,6 +42,7 @@ PGSM003 [ERROR] CREATE INDEX without CONCURRENTLY
 ```
 
 Rules include:
+
 - **PGSM001**: Destructive `DROP TABLE` / `DROP COLUMN`
 - **PGSM003**: Index creation without `CONCURRENTLY`
 - **PGSM005**: `ALTER TYPE ADD VALUE` inside a transaction (PG limitation)
@@ -106,14 +107,14 @@ Blocks PRs that introduce unsafe migrations, drift, or ordering issues.
 
 ## Comparison
 
-| Feature | pg-safe-migrate | node-pg-migrate | graphile-migrate | dbmate |
-|---------|:-:|:-:|:-:|:-:|
-| Safety linting | ✅ 10 rules | ❌ | ❌ | ❌ |
-| Advisory locks | ✅ | ❌ | ✅ | ❌ |
-| Drift detection | ✅ SHA-256 | ❌ | ❌ | ❌ |
-| Transaction control | ✅ per-migration | ✅ | ✅ | ✅ |
-| Override with audit | ✅ | ❌ | ❌ | ❌ |
-| GitHub Action | ✅ | ❌ | ❌ | ❌ |
+| Feature             | pg-safe-migrate  | node-pg-migrate | graphile-migrate | dbmate |
+| ------------------- | :--------------: | :-------------: | :--------------: | :----: |
+| Safety linting      |   ✅ 10 rules    |       ❌        |        ❌        |   ❌   |
+| Advisory locks      |        ✅        |       ❌        |        ✅        |   ❌   |
+| Drift detection     |    ✅ SHA-256    |       ❌        |        ❌        |   ❌   |
+| Transaction control | ✅ per-migration |       ✅        |        ✅        |   ✅   |
+| Override with audit |        ✅        |       ❌        |        ❌        |   ❌   |
+| GitHub Action       |        ✅        |       ❌        |        ❌        |   ❌   |
 
 ## Links
 
@@ -124,4 +125,4 @@ MIT licensed. [Contributions welcome](https://github.com/defnotwig/pg-safe-migra
 
 ---
 
-*What safety checks do you wish your migration tool had? Let me know in the comments.*
+_What safety checks do you wish your migration tool had? Let me know in the comments._

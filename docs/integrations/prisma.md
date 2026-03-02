@@ -82,7 +82,7 @@ jobs:
         image: postgres:16
         env:
           POSTGRES_PASSWORD: postgres
-        ports: ['5432:5432']
+        ports: ["5432:5432"]
     steps:
       - uses: actions/checkout@v4
       - uses: defnotwig/pg-safe-migrate@v1

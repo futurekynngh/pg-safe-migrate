@@ -69,7 +69,7 @@ This is the safe default — if anything fails, the whole migration rolls back. 
 
 ### The Naive Fix: "Just Don't Use Transactions"
 
-Some tools let you disable transactions globally. This is dangerous — you lose atomicity for *all* migrations.
+Some tools let you disable transactions globally. This is dangerous — you lose atomicity for _all_ migrations.
 
 ### The Right Fix: Per-Migration Transaction Control
 
@@ -111,11 +111,11 @@ PGSM005 [ERROR] ALTER TYPE ... ADD VALUE inside a transaction
 
 Three modes, set per migration:
 
-| Directive | Behavior |
-|-----------|----------|
-| `-- pgsm-transaction: auto` | Wrap in transaction (default) |
+| Directive                     | Behavior                            |
+| ----------------------------- | ----------------------------------- |
+| `-- pgsm-transaction: auto`   | Wrap in transaction (default)       |
 | `-- pgsm-transaction: always` | Always use a transaction (explicit) |
-| `-- pgsm-transaction: never` | Skip BEGIN/COMMIT |
+| `-- pgsm-transaction: never`  | Skip BEGIN/COMMIT                   |
 
 The `auto` → `never` escalation is the key insight: safe by default, with an explicit opt-out when you need it.
 
@@ -128,7 +128,7 @@ If you intentionally want to create a small index without `CONCURRENTLY` (e.g., 
 CREATE INDEX IF NOT EXISTS idx_settings_key ON settings (key);
 ```
 
-The reason is recorded in the migration history — so when someone reviews it later, they understand *why* the override exists.
+The reason is recorded in the migration history — so when someone reviews it later, they understand _why_ the override exists.
 
 ## The Complete Safe Pattern
 
@@ -146,6 +146,7 @@ DROP INDEX IF EXISTS idx_orders_status;
 ```
 
 Key elements:
+
 1. **`CONCURRENTLY`** — no table lock
 2. **`IF NOT EXISTS`** — idempotent (caught by PGSM004 if missing)
 3. **`-- pgsm-transaction: never`** — no wrapping transaction
@@ -155,13 +156,13 @@ Key elements:
 
 `CONCURRENTLY` isn't the only DDL that breaks transactions. PostgreSQL also prohibits:
 
-| Statement | Transaction? | Why |
-|-----------|:---:|-----|
-| `CREATE INDEX CONCURRENTLY` | ❌ | Multi-transaction build |
-| `DROP INDEX CONCURRENTLY` | ❌ | Same reason |
-| `ALTER TYPE ... ADD VALUE` | ❌ | Enum values are non-transactional |
-| `VACUUM` | ❌ | Cannot run in transaction |
-| `CLUSTER` | ❌ | Rewrites table |
+| Statement                   | Transaction? | Why                               |
+| --------------------------- | :----------: | --------------------------------- |
+| `CREATE INDEX CONCURRENTLY` |      ❌      | Multi-transaction build           |
+| `DROP INDEX CONCURRENTLY`   |      ❌      | Same reason                       |
+| `ALTER TYPE ... ADD VALUE`  |      ❌      | Enum values are non-transactional |
+| `VACUUM`                    |      ❌      | Cannot run in transaction         |
+| `CLUSTER`                   |      ❌      | Rewrites table                    |
 
 All of these need `-- pgsm-transaction: never`.
 
@@ -175,4 +176,4 @@ All of these need `-- pgsm-transaction: never`.
 
 ---
 
-*pg-safe-migrate is an open-source migration engine for Node.js that handles all of this automatically. [Check it out on GitHub.](https://github.com/defnotwig/pg-safe-migrate)*
+_pg-safe-migrate is an open-source migration engine for Node.js that handles all of this automatically. [Check it out on GitHub.](https://github.com/defnotwig/pg-safe-migrate)_

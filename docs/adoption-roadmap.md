@@ -19,6 +19,7 @@ A practical plan to build genuine ecosystem traction and npm download metrics.
 ## Phase 2: Visibility (Week 2–4)
 
 ### Content Marketing
+
 - [ ] **Publish launch blog post** on Dev.to, Hashnode, Medium
   - Title: "pg-safe-migrate: Advisory Locks + Drift Detection + Safe Defaults for Node.js"
   - Content draft already at `content/launch-post.md`
@@ -28,12 +29,14 @@ A practical plan to build genuine ecosystem traction and npm download metrics.
 - [ ] **Post on Hacker News**: Show HN
 
 ### Community Listings
+
 - [ ] Submit PR to **awesome-nodejs** (https://github.com/sindresorhus/awesome-nodejs)
 - [ ] Submit PR to **awesome-postgres** (https://github.com/dhamaniasad/awesome-postgres)
 - [ ] Add to **npm search keywords** (already done in package.json)
 - [ ] Add GitHub **topics**: `postgresql`, `migrations`, `database`, `cli`, `safety`, `linter`, `drift-detection`, `advisory-locks`, `nodejs`, `typescript`
 
 ### Social
+
 - [ ] Twitter/X thread explaining the "why" — common PostgreSQL migration disasters
 - [ ] LinkedIn post for engineering audience
 
@@ -42,11 +45,13 @@ A practical plan to build genuine ecosystem traction and npm download metrics.
 ## Phase 3: Ecosystem Integration (Week 3–6)
 
 ### Make It Easy to Adopt
+
 - [ ] **npx init command**: `npx pg-safe-migrate init` already works — promote in docs
 - [ ] **One-line CI setup**: Document the GitHub Action in marketplace-ready format
 - [ ] **Migration from existing tools**: Write "Migrating from Knex" / "Migrating from node-pg-migrate" guides
 
 ### Build Downstream Dependents
+
 - [ ] Publish **express-postgres-starter** as standalone template repo
 - [ ] Publish **nextjs-postgres-starter** as standalone template repo
 - [ ] Create a **Fastify starter template**
@@ -54,6 +59,7 @@ A practical plan to build genuine ecosystem traction and npm download metrics.
 - [ ] Create a **create-t3-app** integration example
 
 ### GitHub Action Marketplace
+
 - [ ] Publish the GitHub Action to the Marketplace
 - [ ] Write Action-specific README with copy-paste YAML snippets
 - [ ] Example workflows for popular CI services (CircleCI, GitLab CI)
@@ -63,17 +69,20 @@ A practical plan to build genuine ecosystem traction and npm download metrics.
 ## Phase 4: Community Building (Week 4–8)
 
 ### Engage Developers
+
 - [ ] Add **"good first issue"** labels on GitHub for minor improvements
 - [ ] Create a **Discussions** tab on GitHub for Q&A
 - [ ] Respond to any issues/PRs within 24 hours
 - [ ] Star the repo from personal accounts to seed visibility
 
 ### Conference/Meetup Presence
+
 - [ ] Submit talk proposal to local Node.js meetup: "Safe PostgreSQL Migrations at Scale"
 - [ ] Create a 5-minute lightning talk deck
 - [ ] Record a YouTube walkthrough/demo
 
 ### Partnerships
+
 - [ ] Reach out to Neon (serverless Postgres) for inclusion in their docs
 - [ ] Reach out to Supabase for integration guide listing
 - [ ] Contact popular Node.js course creators for potential mention
@@ -82,13 +91,13 @@ A practical plan to build genuine ecosystem traction and npm download metrics.
 
 ## Phase 5: Metric Milestones
 
-| Metric | Target | How to Track |
-|---|---|---|
-| npm weekly downloads | 500+ | npmjs.com package page |
-| GitHub stars | 100+ | GitHub |
-| Downstream dependents | 10+ | npm "Dependents" tab |
-| GitHub Action users | 20+ | Action marketplace installs |
-| Blog post views | 5,000+ | Dev.to/Hashnode analytics |
+| Metric                | Target | How to Track                |
+| --------------------- | ------ | --------------------------- |
+| npm weekly downloads  | 500+   | npmjs.com package page      |
+| GitHub stars          | 100+   | GitHub                      |
+| Downstream dependents | 10+    | npm "Dependents" tab        |
+| GitHub Action users   | 20+    | Action marketplace installs |
+| Blog post views       | 5,000+ | Dev.to/Hashnode analytics   |
 
 ---
 
@@ -102,14 +111,14 @@ When promoting, always lead with the **unique combination** that no other Node.j
 
 ### Comparison Angles
 
-| Tool | Locks | Drift | Lint | Transaction Policy |
-|---|---|---|---|---|
-| pg-safe-migrate | ✅ Advisory | ✅ SHA-256 | ✅ 10 rules | ✅ Auto/Always/Never |
-| node-pg-migrate | ❌ | ❌ | ❌ | ❌ |
-| Knex migrations | ✅ Table lock | ❌ | ❌ | ❌ |
-| graphile-migrate | ❌ | ✅ Hash | ❌ | ❌ |
-| TypeORM migrations | ❌ | ❌ | ❌ | ❌ |
-| Prisma Migrate | ✅ Advisory | ✅ Hash | ❌ | ❌ |
+| Tool               | Locks         | Drift      | Lint        | Transaction Policy   |
+| ------------------ | ------------- | ---------- | ----------- | -------------------- |
+| pg-safe-migrate    | ✅ Advisory   | ✅ SHA-256 | ✅ 10 rules | ✅ Auto/Always/Never |
+| node-pg-migrate    | ❌            | ❌         | ❌          | ❌                   |
+| Knex migrations    | ✅ Table lock | ❌         | ❌          | ❌                   |
+| graphile-migrate   | ❌            | ✅ Hash    | ❌          | ❌                   |
+| TypeORM migrations | ❌            | ❌         | ❌          | ❌                   |
+| Prisma Migrate     | ✅ Advisory   | ✅ Hash    | ❌          | ❌                   |
 
 ---
 

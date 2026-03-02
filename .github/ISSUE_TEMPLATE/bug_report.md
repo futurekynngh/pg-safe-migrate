@@ -14,9 +14,11 @@ A clear and concise description of the bug.
 
 1. Run `pg-safe-migrate ...`
 2. With this migration file:
+
 ```sql
 -- paste migration SQL here
 ```
+
 3. See error
 
 ## Expected Behavior
