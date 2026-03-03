@@ -77,3 +77,8 @@ pg-safe-migrate lint --allow-unsafe PGSM006
 - Always include a **ticket reference** for team visibility
 - Review overrides in code review — they should be as scrutinized as the SQL itself
 - Prefer config-level overrides only for rules your team has intentionally disabled
+
+## Related Documentation
+
+- [Safety Rules](./safety-rules.md) — full list of built-in rules
+- [Zero-Downtime Deployments](./zero-downtime.md) — patterns that avoid needing overrides
