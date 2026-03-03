@@ -56,3 +56,7 @@
 - [ ] Roll-forward only mode (disable down migrations entirely)
 - [ ] Multi-database support (run migrations across shards)
 - [ ] pg-safe-migrate LSP (VS Code extension with inline diagnostics)
+
+## Community Feedback
+
+Have a feature request or idea? Open an issue or start a discussion — community input directly shapes this roadmap.
