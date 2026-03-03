@@ -151,3 +151,8 @@ You can also run pg-safe-migrate directly in a workflow step:
   env:
     DATABASE_URL: ${{ secrets.DATABASE_URL }}
 ```
+
+## Troubleshooting
+
+- Ensure the PostgreSQL service is healthy before running migrations.
+- Use `--verbose` flag for detailed output when debugging CI failures.
